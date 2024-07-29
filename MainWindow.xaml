@@ -1,0 +1,11 @@
+<Window x:Class="PrimeLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Prime Launcher" Height="450" Width="800">
+    <Grid>
+        <ListBox Name="GameList" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="300"/>
+        <Button Content="Launch" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="LaunchGame"/>
+        <Button Content="Check Updates" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="30" Click="CheckUpdates"/>
+        <Button Content="Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Height="30" Click="OpenSettings"/>
+    </Grid>
+</Window>
