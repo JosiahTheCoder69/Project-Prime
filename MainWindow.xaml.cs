@@ -11,24 +11,24 @@ namespace PrimeLauncher
             InitializeComponent();
         }
 
-        // Navigate to Dashboard
+        
         private void NavigateToDashboard(object sender, RoutedEventArgs e)
         {
-            // Implement navigation logic to the dashboard view
+            
             MessageBox.Show("Navigating to Dashboard...");
         }
 
-        // Open Settings
+       
         private void OpenSettings(object sender, RoutedEventArgs e)
         {
-            // Implement settings functionality
+            
             MessageBox.Show("Opening Settings...");
         }
 
-        // Open Discord Server
+      
         private void OpenDiscordServer(object sender, RoutedEventArgs e)
         {
-            // Open the Discord server link
+           
             try
             {
                 Process.Start(new ProcessStartInfo
@@ -43,10 +43,10 @@ namespace PrimeLauncher
             }
         }
 
-        // Launch Game
+       
         private void LaunchGame(object sender, RoutedEventArgs e)
         {
-            // Implement launch game functionality
+           
             MessageBox.Show("Launching Game...");
         }
     }
