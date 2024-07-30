@@ -1,11 +1,99 @@
 <Window x:Class="PrimeLauncher.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Prime Launcher" Height="450" Width="800">
+        Title="Prime Launcher" Height="450" Width="800"
+        MinHeight="500" MinWidth="900"
+        Background="#202535">
+    <Window.Resources>
+        <!-- Define general button styles with rounded corners and hover effect -->
+        <Style x:Key="SidebarButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#303C4A"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="10" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#405060"/> <!-- Lighter shade on hover -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="LaunchButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#1E2A37"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="10" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2A3B4A"/> <!-- Lighter shade on hover -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Define the main grid style -->
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#202535"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <ListBox Name="GameList" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="300"/>
-        <Button Content="Launch" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="LaunchGame"/>
-        <Button Content="Check Updates" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="30" Click="CheckUpdates"/>
-        <Button Content="Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Height="30" Click="OpenSettings"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Background="#303C4A" Width="200" VerticalAlignment="Stretch">
+            <Button Content="Dashboard" Style="{StaticResource SidebarButtonStyle}" Click="NavigateToDashboard"/>
+            <Button Content="Settings" Style="{StaticResource SidebarButtonStyle}" Click="OpenSettings"/>
+            <Button Content="Discord Server" Style="{StaticResource SidebarButtonStyle}" Click="OpenDiscordServer"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <StackPanel Grid.Column="1" Margin="20" VerticalAlignment="Top">
+            <Button Content="Launch" Style="{StaticResource LaunchButtonStyle}" Click="LaunchGame"/>
+        </StackPanel>
     </Grid>
 </Window>
